@@ -1,4 +1,4 @@
-name: My First Pipeline
+name: Test Pipeline
 
 on:
   push:
@@ -12,14 +12,29 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Show system info
-        run: |
-          echo "Pipeline started!"
-          date
-          whoami
-          pwd
-          ls -la
-          uname -a
+      - name: Setup python
+        uses: actions/checkout@v4
+        with:
+          python-version: '3.12'
 
-      - name: Complete
-        run: echo "Done!"
+      - name: Install dependencies
+        run: |
+          pip install pytest
+
+      - name: Create test file
+        run: |
+          cat > test_app.py <<'EOF'
+          def add(a,b):
+            return a + b
+
+          def test_add():
+            assert add(2,3) = 5
+            assert add(0,0) = 0
+            print("All passed")
+          EOF
+          
+      - name: Run tests
+        run: pytest test_app.py -v
+
+      - name: Tests passed
+        run: echo "All passed -deploy"
