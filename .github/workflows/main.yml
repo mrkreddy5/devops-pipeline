@@ -17,6 +17,9 @@ jobs:
           echo "Pipeline started!"
           date
           whoami
+          pwd
+          ls -la
+          uname -a
 
       - name: Complete
         run: echo "Done!"
