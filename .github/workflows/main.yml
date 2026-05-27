@@ -1,0 +1,22 @@
+name: My First Pipeline
+
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Show system info
+        run: |
+          echo "Pipeline started!"
+          date
+          whoami
+
+      - name: Complete
+        run: echo "Done!"
