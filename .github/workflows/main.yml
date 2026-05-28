@@ -26,6 +26,6 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD}}
           API_KEY: ${secrets.API_KEY}}
         run: |
-          echo "Password length: ${#DB_PASSWORD"}
+          echo "Password length: ${#DB_PASSWORD}"
           echo "SECRETS LOADED SUCCESSFULLY"
   
